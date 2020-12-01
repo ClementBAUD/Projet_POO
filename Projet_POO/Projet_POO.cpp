@@ -1,11 +1,11 @@
 // Projet_POO.cpp : Ce fichier contient la fonction 'main'. L'exécution du programme commence et se termine à cet endroit.
 //
-using namespace std;
+
 #include <iostream>
 
 int main()
 {
-    cout << "Hakim camionneur\n";
+    std::cout << "Hello World!\n";
 }
 
 // Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage
