@@ -10,7 +10,7 @@ namespace NS_composants {
     }
     String^ CL_map_personnel::SELECT(void)
     {
-        return "SELECT Id_Personne, Nom, Prenom, Superieur_Hierarchique " + "FROM Personnel;";
+        return "SELECT * " + "FROM Personnel;";
     }
     String^ CL_map_personnel::INSERT(void)
     {

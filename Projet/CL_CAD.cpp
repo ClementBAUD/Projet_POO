@@ -3,7 +3,7 @@ namespace NS_composants {
 	CL_CAD::CL_CAD(void) {
 		this->RequeteSql = "NULL";
 		this->ChaineConnexion = "Data Source=(localdb)\\MSSQLLocalDB;" +
-			"Initial Catalog=Corbeille6;" + // A Modifier
+			"Initial Catalog=BDDprojet;" +
 			"Integrated Security=true;";
 		this->Connection = gcnew SqlConnection(this->ChaineConnexion);
 		this->Command = gcnew SqlCommand(this->RequeteSql, this->Connection);

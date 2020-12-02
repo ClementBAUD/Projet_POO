@@ -45,43 +45,43 @@ namespace NS_composants
     }
     String^ CL_map_Adresse::SELECTADRCLIENT(void)
     {
-        return "SELECT Id_Adresse, Adresse, Ville, CP " + "FROM Adresse WHERE id_client=" + this->getIDclient() + ";";
+        return "SELECT Id_Adresse, Adresse, Ville, CP " + "FROM Adresse WHERE Num_Client=" + this->getIDclient() + ";";
     }
     String^ CL_map_Adresse::SELECTADRPERSONNEL(void)
     {
-        return "SELECT Id_Adresse, Adresse, Ville, CP " + "FROM Adresse WHERE id_personnel=" + this->getIDperso() + ";";
+        return "SELECT Id_Adresse, Adresse, Ville, CP " + "FROM Adresse WHERE id_Personne=" + this->getIDperso() + ";";
     }
     String^ CL_map_Adresse::INSERTADRCLIENT(void)
     {
         return "INSERT INTO Adresse " +
-            "(Adresse, Ville, CP,id_client) " + "VALUES('" + this->getAdresse() + "', '" + this->getVille() + "', '" + this->getCP() + "','" + this->getIDclient() + "');SELECT @@IDENTITY;";
+            "(Adresse, Ville, CP,Num_Client) " + "VALUES('" + this->getAdresse() + "', '" + this->getVille() + "', '" + this->getCP() + "','" + this->getIDclient() + "');SELECT @@IDENTITY;";
     }
     String^ CL_map_Adresse::INSERTADRPERSONNEL(void)
     {
         return "INSERT INTO Adresse " +
-            "(Adresse, Ville, CP, id_personnel) " + "VALUES('" + this->getAdresse() + "', '" + this->getVille() + "', '" + this->getCP() + "','" + this->getIDperso() + "');SELECT @@IDENTITY;";
+            "(Adresse, Ville, CP, id_Personne) " + "VALUES('" + this->getAdresse() + "', '" + this->getVille() + "', '" + this->getCP() + "','" + this->getIDperso() + "');SELECT @@IDENTITY;";
     }
     String^ CL_map_Adresse::UPDATEADRCLIENT(void)
     {
         return "UPDATE Adresse " +
             "SET Adresse = '" + this->getAdresse() + "', Ville = '" + this->getVille() + "', CP = '" + this->getCP() + "' " +
-            "WHERE(id_adresse = " + this->getId() + "AND id_client= " + this->getIDclient() + ");";
+            "WHERE(id_Adresse = " + this->getId() + "AND Num_client= " + this->getIDclient() + ");";
     }
     String^ CL_map_Adresse::UPDATEADRPERSONNEL(void)
     {
         return "UPDATE Adresse " +
             "SET Adresse = '" + this->getAdresse() + "', Ville = '" + this->getVille() + "', CP = '" + this->getCP() + "' " +
-            "WHERE(id_adresse = " + this->getId() + "AND id_personnel= " + this->getIDperso() + ");";
+            "WHERE(id_Adresse = " + this->getId() + "AND id_Personne= " + this->getIDperso() + ");";
     }
     String^ CL_map_Adresse::DELETEADRCLIENT(void)
     {
         return "DELETE FROM Adresse " +
-            "WHERE(id_client=" + this->getIDclient() + ");";
+            "WHERE(Num_client=" + this->getIDclient() + ");";
     }
     String^ CL_map_Adresse::DELETEADRPERSONNEL(void)
     {
         return "DELETE FROM Adresse " +
-            "WHERE(id_personnel=" + this->getIDperso() + ");";
+            "WHERE(id_Personne=" + this->getIDperso() + ");";
     }
     void CL_map_Adresse::setAdresse(String^ adresse)
     {

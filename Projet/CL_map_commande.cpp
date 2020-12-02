@@ -2,6 +2,7 @@
 namespace NS_composants {
 	CL_map_commande::CL_map_commande(void) {
 		this->id_commande = -1;
+		this->id_client = -1;
 		this->refComm = "";
 		this->refArt = "";
 		this->NomArt = "";
@@ -12,33 +13,33 @@ namespace NS_composants {
 	}
 	String^ CL_map_commande::SELECTALL(void) {
 		return "SELECT *" +
-			"FROM TB_commande WHERE id_client=" + this->getIDclient() + ";";
+			"FROM Commande WHERE Num_Client=" + this->getIDclient() + ";";
 	}
 	String^ CL_map_commande::SELECT(void)
 	{
-		return "SELECT *" +
-			"FROM TB_commande WHERE refComm=" + this->getRefComm() + ";";
+		return "SELECT * " +
+			"FROM Commande WHERE reference=" + this->getRefComm() + ";";
 	}
 	String^ CL_map_commande::INSERT(void)
 	{
-		return "INSERT INTO TB_commande" +
-			"(refComm,refArt,NomArt,Nature, Quantite,prixHT,tva)" +
+		return "INSERT INTO Commande" +
+			"(reference,reference_Article,Nom_Article,Nature, Quantite, PrixHT,TauxTVA)" +
 			"VALUES('" + this->getRefComm() + "','" + this->getRefArt() + "','" + this->getNomArt() + "','" +this->getNature() + "'" + this->getQuantite() + "','" + this->getPrixHT() + "','" + this->getTVA() + "');SELECT @@IDENTITY;";
 	}
 	String^ CL_map_commande::UPDATE(void)
 	{
-		return "UPDATE TB_commande" +
-			"SET refArt='" + this->getRefArt() + "',NomArt='" + this->getNomArt() + "', Nature='" + this->getNature() + "',Quantite='" + this->getQuantite() + "',prixHT='" + this->getPrixHT() + "',tva='" + this->getTVA() + "'" +
-			"WHERE(id_commande=" + this->getID() + "AND refComm =" + this->getRefComm() + ");";
+		return "UPDATE Commande" +
+			"SET reference_Article='" + this->getRefArt() + "',Nom_Article='" + this->getNomArt() + "', Nature='" + this->getNature() + "',Quantite='" + this->getQuantite() + "',PrixHT='" + this->getPrixHT() + "',TauxTVA='" + this->getTVA() + "'" +
+			"WHERE(Id=" + this->getID() + "AND reference=" + this->getRefComm() + ");";
 	}
 	String^ CL_map_commande::DELETE(void)
 	{
-		return "DELETE FROM TB_commande" +
-			"WHERE(id_commande=" + this->getID() + ");";
+		return "DELETE FROM Commande" +
+			"WHERE(Id=" + this->getID() + ");";
 	}
 	String^  CL_map_commande::DELETEALL(void) {
-		return "DELETE FROM TB_commande " +
-			"WHERE(refComm=" + this->getRefComm() + ");";
+		return "DELETE FROM Commande " +
+			"WHERE(reference=" + this->getRefComm() + ");";
 	}
 	void CL_map_commande::setID(int id) {
 		if (id > 0) {

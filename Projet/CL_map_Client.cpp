@@ -9,7 +9,7 @@ namespace NS_composants {
     }
     String^ CL_map_Client::SELECT(void)
     {
-        return "SELECT Num_Client, Nom, Prenom, " + "FROM Client;";
+        return "SELECT * " + "FROM Client;";
     }
     String^ CL_map_Client::INSERT(void)
     {
