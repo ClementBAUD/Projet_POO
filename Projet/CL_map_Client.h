@@ -1,0 +1,27 @@
+#pragma once
+#include "CL_map_Adresse.h"
+#include "CL_map_date.h"
+
+using namespace System;
+namespace NS_composants
+{
+	ref class CL_map_Client
+	{
+	private:
+		int num_client;
+		String^ nom;
+		String^ prenom;
+	public:
+		CL_map_Client();
+		String^ SELECT(void);
+		String^ INSERT(void);
+		String^ UPDATE(void);
+		String^ DELETE(void);
+		void setID(int);
+		void setPrenom(String^);
+		void setNom(String^);
+		int getId(void);
+		String^ getNom(void);
+		String^ getPrenom(void);
+	};
+}
