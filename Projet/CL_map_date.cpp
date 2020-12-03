@@ -43,11 +43,11 @@ namespace NS_composants {
 	}
 	String^ CL_map_date::SELECTDATECLIENT(void)
 	{
-		return "SELECT Type, Jour, Mois, Annee " + "FROM Date WHERE Num_Client=" + this->getIDclient() + ";";
+		return "SELECT Id_Date,Type, Jour, Mois, Annee " + "FROM Date WHERE Num_Client=" + this->getIDclient() + ";";
 	}
 	String^ CL_map_date::SELECTDATEPERSONNEL(void)
 	{
-		return "SELECT Type, Jour, Mois, Annee " + "FROM Date WHERE Id_Personne=" + this->getIDperso() + ";";
+		return "SELECT Id_Date,Type, Jour, Mois, Annee " + "FROM Date WHERE Id_Personnel=" + this->getIDperso() + ";";
 	}
 	String^ CL_map_date::INSERTDATECLIENT(void)
 	{
@@ -58,8 +58,8 @@ namespace NS_composants {
 	String^ CL_map_date::INSERTDATEPERSONNEL(void)
 	{
 		return "INSERT INTO Date " +
-			"(Type, Jour, Mois, Annee,Id_Personne) "
-			+ "VALUES('"+ this->getType() + "','" + this->getDay() + "', '" + this->getMonth() + "', '" + this->getYear() + "','" + this->getIDperso() + "');SELECT @@IDENTITY;";
+			"(Type, Jour, Mois, Annee,Id_Personnel) "
+			+ "VALUES('"+this->getType() + "','" + this->getDay() + "', '" + this->getMonth() + "', '" + this->getYear() + "','" + this->getIDperso() + "');SELECT @@IDENTITY;";
 	}
 	String^ CL_map_date::UPDATEDATECLIENT(void)
 	{
@@ -71,7 +71,7 @@ namespace NS_composants {
 	{
 		return "UPDATE Date "
 			+ "SET Jour = '" + this->getDay() + "', Mois = '" + this->getMonth() + "', Annee = '" + this->getYear() + "'" +
-			"WHERE(id_Date = " + this->getID() + "AND Id_Personne= " + this->getIDperso() + ");";
+			"WHERE(id_Date = " + this->getID() + "AND Id_Personnel= " + this->getIDperso() + ");";
 	}
 	String^ CL_map_date::DELETEDATECLIENT(void)
 	{
@@ -81,7 +81,7 @@ namespace NS_composants {
 	String^ CL_map_date::DELETEDATEPERSONNEL(void)
 	{
 		return "DELETE FROM Date " +
-			"WHERE(Id_Personne=" + this->getIDperso() + ");";
+			"WHERE(Id_Personnel=" + this->getIDperso() + ");";
 	}
 	String^ CL_map_date::SELECTDATECOMM(void)
 	{

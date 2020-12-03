@@ -68,36 +68,37 @@ namespace NS_services
         id_personnel = this->cad->actionRowsID(this->personnel->INSERT());
         return id_personnel;
     }
-    int CL_svc_personne::ajouterDateC(int id_client, int day, int month, int year)
+    int CL_svc_personne::ajouterDateC(int id_client, int day, int month, int year,String^ type)
     {
         int id_dateC;
         this->date->setIDclient(id_client);
         this->date->setDay(day);
         this->date->setMonth(month);
         this->date->setYear(year);
-        this->date->setType("Date d'anniversaire");
+        this->date->setType(type);
         id_dateC = this->cad->actionRowsID(this->date->INSERTDATECLIENT());
         return id_dateC;
     }
     int CL_svc_personne::ajouterDateP(int id_perso, int day, int month, int year)
     {
         int id_dateP;
+        String^ type = "Date embauche";
         this->date->setIDperso(id_perso);
         this->date->setDay(day);
         this->date->setMonth(month);
         this->date->setYear(year);
-        this->date->setType("Date d'embauche");
+        this->date->setType(type);
         id_dateP = this->cad->actionRowsID(this->date->INSERTDATEPERSONNEL());
         return id_dateP;
     }
-    int CL_svc_personne::ajouterAdrC(int id_client, String^ adresse, String^ ville, String^ cp)
+    int CL_svc_personne::ajouterAdrC(int id_client, String^ adresse, String^ ville, String^ cp,String^ type)
     {
         int id_adrC;
         this->adresse->setIDclient(id_client);
         this->adresse->setAdresse(adresse);
         this->adresse->setVille(ville);
         this->adresse->setCP(cp);
-
+        this->adresse->setType(type);
         id_adrC = this->cad->actionRowsID(this->adresse->INSERTADRCLIENT());
         return id_adrC;
     }
@@ -108,7 +109,6 @@ namespace NS_services
         this->adresse->setAdresse(adresse);
         this->adresse->setVille(ville);
         this->adresse->setCP(cp);
-
         id_adrP = this->cad->actionRowsID(this->adresse->INSERTADRPERSONNEL());
         return id_adrP;
     }

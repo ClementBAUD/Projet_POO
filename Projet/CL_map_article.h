@@ -6,7 +6,7 @@ namespace NS_composants
 	{
 	private:
 		int id_article;
-		float PrixHT;
+		int PrixHT;
 		String^ Ref_Article;
 		String^ Nom_Article;
 		int Stock_Article;
@@ -17,11 +17,12 @@ namespace NS_composants
 	public:
 		CL_map_article(void);
 		String^ SELECT(void);
+		String^ SELECTONE(void);
 		String^ INSERT(void);
 		String^ UPDATE(void);
 		String^ DELETE(void);
 		void setId_Article(int);
-		void setPrixHT(float);
+		void setPrixHT(int);
 		void setRef_Article(String^);
 		void setNom_Article(String^);
 		void setStock_Article(int);
@@ -30,7 +31,7 @@ namespace NS_composants
 		void setSeuilReappro_Article(int);
 		void setTauxTVA(int);
 		int getId_Article(void);
-		float getPrixHT(void);
+		int getPrixHT(void);
 		String^ getRef_Article(void);
 		String^ getNom_Article(void);
 		int getStock_Article(void);

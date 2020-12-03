@@ -30,11 +30,11 @@ namespace NS_composants {
             "WHERE(Num_Client = " + this->getId() + ");";
     }
 
-    void CL_map_Client::setID(int id_personne)
+    void CL_map_Client::setID(int id)
     {
-        if (id_personne > 0)
+        if (id > 0)
         {
-            this->num_client = id_personne;
+            this->num_client = id;
         }
     }
 

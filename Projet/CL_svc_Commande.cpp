@@ -11,24 +11,28 @@ namespace NS_services {
 	{
 		this->dataset->Clear();
 		this->date->setIDcomm(id_commande);
-		this->cad->getRows(this->date->SELECTDATECOMM(), list);
+		this->dataset = this->cad->getRows(this->date->SELECTDATECOMM(), list);
 		return dataset;
 	}
 	DataSet^ CL_svc_Commande::listeCommande(String^ ref, String^ list)
 	{
 		this->dataset->Clear();
 		this->commande->setRefComm(ref);
-		this->cad->getRows(this->commande->SELECT(), list);
+		this->dataset = this->cad->getRows(this->commande->SELECT(), list);
 		return dataset;
 	}
 	DataSet^ CL_svc_Commande::listeCommandeClient(int id_client, String^ list) {
+
 		this->dataset->Clear();
 		this->commande->setIDclient(id_client);
-		this->cad->getRows(this->commande->SELECTALL(), list);
+		this->dataset = this->cad->getRows(this->commande->SELECTALL(), list);
 		return dataset;
 	}
-	int CL_svc_Commande::ajouterC(String^ refcomm, String^ refarticle, String^ nom,String^ nature, int tva, int quantite, float prix)
+	int CL_svc_Commande::ajouterC(int id_client,int id_article, String^ refcomm, String^ refarticle, String^ nom,String^ nature, int tva, int quantite, int prix)
 	{
+		int id_commande;
+		this->commande->setIDarticle(id_article);
+		this->commande->setIDclient(id_client);
 		this->commande->setRefComm(refcomm);
 		this->commande->setRefArt(refarticle);
 		this->commande->setNomArt(nom);
@@ -36,9 +40,10 @@ namespace NS_services {
 		this->commande->setTVA(tva);
 		this->commande->setQuantite(quantite);
 		this->commande->setPrixHT(prix);
-		this->cad->actionRows(this->commande->INSERT());
+		id_commande = this->cad->actionRowsID(this->commande->INSERT());
+		return id_commande;
 	}
-	void CL_svc_Commande::modifierC(int id_comm, String^ refcomm, String^ refarticle, String^ nom,String^ nature, int tva, int quantite, float prix)
+	void CL_svc_Commande::modifierC(int id_comm, String^ refcomm, String^ refarticle, String^ nom,String^ nature, int tva, int quantite, int prix)
 	{
 		this->commande->setID(id_comm);
 		this->commande->setRefComm(refcomm);
@@ -62,12 +67,14 @@ namespace NS_services {
 	}
 	int CL_svc_Commande::ajouterD(String^ type, int id_commande, int day,int month,int year)
 	{
+		int id_date;
 		this->date->setIDcomm(id_commande);
 		this->date->setDay(day);
 		this->date->setMonth(month);
 		this->date->setYear(year);
 		this->date->setType(type);
-		this->cad->actionRows(this->date->INSERTDATECOMM());
+		id_date = this->cad->actionRowsID(this->date->INSERTDATECOMM());
+		return id_date;
 	}
 	void CL_svc_Commande::modifierD(int id_commande, int id_date, int day, int month, int year)
 	{

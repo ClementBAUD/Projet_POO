@@ -18,17 +18,17 @@ namespace NS_composants {
 	String^ CL_map_commande::SELECT(void)
 	{
 		return "SELECT * " +
-			"FROM Commande WHERE reference=" + this->getRefComm() + ";";
+			"FROM Commande WHERE (Reference='" + this->getRefComm() + "');";
 	}
 	String^ CL_map_commande::INSERT(void)
 	{
-		return "INSERT INTO Commande" +
-			"(reference,reference_Article,Nom_Article,Nature, Quantite, PrixHT,TauxTVA)" +
-			"VALUES('" + this->getRefComm() + "','" + this->getRefArt() + "','" + this->getNomArt() + "','" +this->getNature() + "'" + this->getQuantite() + "','" + this->getPrixHT() + "','" + this->getTVA() + "');SELECT @@IDENTITY;";
+		return "INSERT INTO Commande " +
+			"(Id_article,Num_Client, reference,reference_Article,Nom_Article,Nature, Quantite, PrixHT,TauxTVA)" +
+			"VALUES('" + this->getID_article() +"','"+ this->getIDclient() + "','" + this->getRefComm() + "','" + this->getRefArt() + "','" + this->getNomArt() + "','" +this->getNature() + "','" + this->getQuantite() + "','" + this->getPrixHT() + "','" + this->getTVA() + "');SELECT @@IDENTITY;";
 	}
 	String^ CL_map_commande::UPDATE(void)
 	{
-		return "UPDATE Commande" +
+		return "UPDATE Commande " +
 			"SET reference_Article='" + this->getRefArt() + "',Nom_Article='" + this->getNomArt() + "', Nature='" + this->getNature() + "',Quantite='" + this->getQuantite() + "',PrixHT='" + this->getPrixHT() + "',TauxTVA='" + this->getTVA() + "'" +
 			"WHERE(Id=" + this->getID() + "AND reference=" + this->getRefComm() + ");";
 	}
@@ -100,5 +100,13 @@ namespace NS_composants {
 	}
 	String^ CL_map_commande::getNature(void) {
 		return this->Nature;
+	}
+	void CL_map_commande::setIDarticle(int id) {
+		if (id > 0) {
+			this->id_article = id;
+		}
+	}
+	int CL_map_commande::getID_article(void) {
+		return this->id_article;
 	}
 }

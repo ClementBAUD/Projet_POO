@@ -31,9 +31,9 @@ namespace NS_services {
 		DataSet^ listeAdrP(int, String^);
 		int ajouterC(String^, String^);
 		int ajouterP(String^, String^, String^);
-		int ajouterDateC(int, int, int, int);
+		int ajouterDateC(int, int, int, int,String^);
 		int ajouterDateP(int, int, int, int);
-		int ajouterAdrC(int, String^, String^, String^);
+		int ajouterAdrC(int, String^, String^, String^,String^);
 		int ajouterAdrP(int, String^, String^, String^);
 		void modifierC(int, String^, String^);
 		void modifierP(int, String^, String^, String^);

@@ -17,10 +17,13 @@ namespace NS_composants
 
 	String^ CL_map_article::SELECT(void)
 	{
-		return "SELECT PrixHT, Reference, Nom, Quantite_en_stock, Designation, Couleur, Seuil_de_reaprovisionnement, TauxTVA  " +
+		return "SELECT * " +
 			"FROM Article;";
 	}
-
+	String^ CL_map_article::SELECTONE(void) {
+		return "SELECT * " +
+			"FROM Article WHERE id_article =" + this->getId_Article() + ";";
+	}
 	String^ CL_map_article::INSERT(void)
 	{
 		return "INSERT INTO Article " +
@@ -53,7 +56,7 @@ namespace NS_composants
 		}
 	}
 
-	void CL_map_article::setPrixHT(float PrixHT)
+	void CL_map_article::setPrixHT(int PrixHT)
 	{
 		if (PrixHT > 0)
 		{
@@ -122,7 +125,7 @@ namespace NS_composants
 		return this->id_article;
 	}
 
-	float CL_map_article::getPrixHT(void)
+	int CL_map_article::getPrixHT(void)
 	{
 		return this->PrixHT;
 	}

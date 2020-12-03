@@ -7,6 +7,7 @@ namespace NS_composants {
 	private:
 		int id_commande;
 		int id_client;
+		int id_article;
 		String^ refComm;
 		String^ refArt;
 		String^ NomArt;
@@ -22,6 +23,7 @@ namespace NS_composants {
 		String^ DELETE(void);
 		String^ DELETEALL(void);
 		String^ SELECTALL(void);
+		void setIDarticle(int);
 		void setID(int);
 		void setIDclient(int);
 		void setRefComm(String^);
@@ -31,6 +33,7 @@ namespace NS_composants {
 		void setQuantite(int);
 		void setPrixHT(float);
 		void setTVA(int);
+		int getID_article(void);
 		int getID(void);
 		int getIDclient(void);
 		String^ getRefComm(void);

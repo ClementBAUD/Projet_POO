@@ -16,8 +16,9 @@ namespace NS_services
 	public:
 		CL_svc_gestionArticles(void);
 		DataSet^ listeArticle(String^);
-		int ajouter(float, String^, String^, int, String^, String^, int, int);
-		void modifier(int, float, String^, String^, int, String^, String^, int, int);
+		DataSet^ articleunite(int, String^);
+		int ajouter(int, String^, String^, int, String^, String^, int, int);
+		void modifier(int, int, String^, String^, int, String^, String^, int, int);
 		void supprimer(int);
 	};
 }

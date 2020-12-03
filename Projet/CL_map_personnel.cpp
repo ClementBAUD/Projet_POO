@@ -21,7 +21,7 @@ namespace NS_composants {
     String^ CL_map_personnel::UPDATE(void)
     {
         return "UPDATE Personnel " +
-            "SET Nom = '" + this->getNom() + "', Prenom = '" + this->getPrenom() + "', Superieur_Hierarchique = '" + this->getSuperieur() + "' " +
+            "SET Nom ='" + this->getNom() + "', Prenom = '" + this->getPrenom() + "', Superieur_Hierarchique = '" + this->getSuperieur() + "' " +
             "WHERE(Id_Personne = " + this->getId() + ");";
     }
 

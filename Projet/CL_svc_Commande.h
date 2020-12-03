@@ -16,8 +16,8 @@ namespace NS_services {
 		DataSet^ listeDate(int, String^);
 		DataSet^ listeCommande(String^, String^);
 		DataSet^ listeCommandeClient(int, String^);
-		int ajouterC(String^, String^, String^,String^, int, int, float);
-		void modifierC(int, String^, String^, String^, String^, int, int, float);
+		int ajouterC(int,int,String^, String^, String^,String^, int, int, int);
+		void modifierC(int, String^, String^, String^, String^, int, int, int);
 		void supprimerC(int);
 		void supprimerCALL(String^);
 		int ajouterD(String^,int, int, int, int);

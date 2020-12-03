@@ -45,16 +45,16 @@ namespace NS_composants
     }
     String^ CL_map_Adresse::SELECTADRCLIENT(void)
     {
-        return "SELECT Id_Adresse, Adresse, Ville, CP " + "FROM Adresse WHERE Num_Client=" + this->getIDclient() + ";";
+        return "SELECT Id,Type,Adresse, Ville, CP " + "FROM Adresse WHERE Num_Client=" + this->getIDclient() + ";";
     }
     String^ CL_map_Adresse::SELECTADRPERSONNEL(void)
     {
-        return "SELECT Id_Adresse, Adresse, Ville, CP " + "FROM Adresse WHERE id_Personne=" + this->getIDperso() + ";";
+        return "SELECT Id,Adresse, Ville, CP " + "FROM Adresse WHERE id_Personne=" + this->getIDperso() + ";";
     }
     String^ CL_map_Adresse::INSERTADRCLIENT(void)
     {
         return "INSERT INTO Adresse " +
-            "(Adresse, Ville, CP,Num_Client) " + "VALUES('" + this->getAdresse() + "', '" + this->getVille() + "', '" + this->getCP() + "','" + this->getIDclient() + "');SELECT @@IDENTITY;";
+            "(Type, Adresse, Ville, CP,Num_Client) " + "VALUES('"+ this->getType() + "', '" + this->getAdresse() + "', '" + this->getVille() + "', '" + this->getCP() + "','" + this->getIDclient() + "');SELECT @@IDENTITY;";
     }
     String^ CL_map_Adresse::INSERTADRPERSONNEL(void)
     {
@@ -64,14 +64,14 @@ namespace NS_composants
     String^ CL_map_Adresse::UPDATEADRCLIENT(void)
     {
         return "UPDATE Adresse " +
-            "SET Adresse = '" + this->getAdresse() + "', Ville = '" + this->getVille() + "', CP = '" + this->getCP() + "' " +
-            "WHERE(id_Adresse = " + this->getId() + "AND Num_client= " + this->getIDclient() + ");";
+            "SET Adresse = '" + this->getAdresse() + "',Ville= '" + this->getVille() + "',CP= '" + this->getCP() + "' " +
+            "WHERE(Id= " + this->getId() + "AND Num_Client= " + this->getIDclient() + ");";
     }
     String^ CL_map_Adresse::UPDATEADRPERSONNEL(void)
     {
         return "UPDATE Adresse " +
             "SET Adresse = '" + this->getAdresse() + "', Ville = '" + this->getVille() + "', CP = '" + this->getCP() + "' " +
-            "WHERE(id_Adresse = " + this->getId() + "AND id_Personne= " + this->getIDperso() + ");";
+            "WHERE(Id= " + this->getId() + "AND id_Personne= " + this->getIDperso() + ");";
     }
     String^ CL_map_Adresse::DELETEADRCLIENT(void)
     {
@@ -117,5 +117,10 @@ namespace NS_composants
     {
         return this->cp;
     }
-
+    String^ CL_map_Adresse::getType(void) {
+        return this->type;
+    }
+    void CL_map_Adresse::setType(String^ type) {
+        this->type = type;
+    }
 }

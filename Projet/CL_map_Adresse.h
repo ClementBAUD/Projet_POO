@@ -10,6 +10,7 @@ namespace NS_composants
 		String^ adresse;
 		String^ ville;
 		String^ cp;
+		String^ type;
 		int id_client;
 		int id_personnel;
 	public:
@@ -20,6 +21,8 @@ namespace NS_composants
 		int getIDclient(void);
 		void setIDperso(int);
 		int getIDperso(void);
+		String^ getType(void);
+		void setType(String^);
 		String^ SELECTADRCLIENT(void);
 		String^ SELECTADRPERSONNEL(void);
 		String^ INSERTADRCLIENT(void);
