@@ -1,23 +1,23 @@
 #include "CL_commande.h"
 namespace NS_composants {
-	String^ CL_commande::SELECT(void)
+	String^ CL_commande::SELECT(void)//On selectionne tous les champs de notre table TB_commande
 	{
 		return "SELECT *" +
 			"FROM TB_commande;";
 	}
-	String^ CL_commande::INSERT(void)
+	String^ CL_commande::INSERT(void) //On insert des données en utilisants les getteurs necessaire pour creer une commande
 	{
 		return "INSERT INTO TB_commande" +
 			"(refComm,refArt,NomArt,Quantite,prixHT,tva)" +
 			"VALUES('" + this->getRefComm() + "','" + this->getRefArt() + "','" + this->getNomArt() + "','" + this->getQuantite() + "','" + this->getPrixHT() + "','" + this->getTVA() + "');SELECT @@IDENTITY;";
 	}
-	String^ CL_commande::UPDATE(void)
+	String^ CL_commande::UPDATE(void) //On met à jour les données en utilisants les getteurs necessaire
 	{
 		return "UPDATE TB_commande" +
 			"SET refComm = '" + this->getRefComm() + "', refArt='" + this->getRefArt() + "',NomArt='" + this->getNomArt() + "',Quantite='" + this->getQuantite() + "',prixHT='" + this->getPrixHT() + "',tva='" + this->getTVA() + "'" +
 			"WHERE(id_commande=" + this->getID() + ");";
 	}
-	String^ CL_commande::DELETE(void)
+	String^ CL_commande::DELETE(void) // On supprime une ligne complete en fonction de l'ID de la commande
 	{
 		return "DELETE FROM TB_commande" +
 			"WHERE(id_commande=" + this->getID() + ");";
