@@ -1,15 +1,15 @@
 #include "CL_CAD.h"
+//Classe servant a initaliser la base de données à l'aide de plusieurs fonctions
 namespace NS_composants {
 	CL_CAD::CL_CAD(void) {
 		this->RequeteSql = "NULL";
-		this->ChaineConnexion = "Data Source=(localdb)\\MSSQLLocalDB;" +
-			"Initial Catalog=BDDprojet;" +
-			"Integrated Security=true;";
+		this->ChaineConnexion = "Data Source=(localdb)\\MSSQLLocalDB;" + //On indique la localisation de notre bdd
+			"Initial Catalog=BDDprojet;" +//On indique le nom de notre projet
+			"Integrated Security=true;";// On indique si la bdd a besoin d'un mot de passe ou non
 		this->Connection = gcnew SqlConnection(this->ChaineConnexion);
 		this->Command = gcnew SqlCommand(this->RequeteSql, this->Connection);
 		this->Command->CommandType = CommandType::Text;
 	}
-
 	int CL_CAD::actionRowsID(String^ RequeteSql) {
 		int id;
 		this->setSQL(RequeteSql);
