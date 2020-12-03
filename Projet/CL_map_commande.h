@@ -18,6 +18,7 @@ namespace NS_composants {
 	public:
 		CL_map_commande(void);
 		String^ SELECT(void);
+		String^ SELECTTOTAL(void);
 		String^ INSERT(void);
 		String^ UPDATE(void);
 		String^ DELETE(void);

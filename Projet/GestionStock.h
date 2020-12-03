@@ -414,20 +414,44 @@ private: System::Void btn_modifier_Click(System::Object^ sender, System::EventAr
 	this->txt_message->Text = "Veuillez remplacer les informations nécessaires";
 }
 private: System::Void btn_suppr_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->txtCouleur->Clear();
+	this->txtNatureArticle->Clear();
+	this->txtPrixHT->Clear();
+	this->txtQuantitee->Clear();
+	this->TxtTauxTVA->Clear();
+	this->txt_NomArticle->Clear();
+	this->txt_Idart->Clear();
+	this->txt_Refart->Clear();
 	this->mode = "delete";
-	this->txt_message->Text = "Etes-vous sur de vouloir supprimer cet article ?";
+	this->txt_message->Text = "Saisissez l'id de l'article à supprimer";
 }
 private: System::Void BtnEnregistrer_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (this->mode == "new") {
-		int id_article;
-		id_article = this->article->ajouter(Convert::ToInt32(this->txtPrixHT->Text), this->txt_Refart->Text, this->txt_NomArticle->Text, Convert::ToInt32(this->txtQuantitee->Text), this->txtNatureArticle->Text, this->txtCouleur->Text, Convert::ToInt32(this->txt_seuil->Text), Convert::ToInt32(this->TxtTauxTVA->Text));
-		this->txt_message->Text = "L'ID généré est le :" + id_article;
+		if ((this->txtPrixHT->Text != "") && (this->txt_Refart->Text != "") && (this->txt_NomArticle->Text != "") && (this->txtQuantitee->Text != "") && (this->txtNatureArticle->Text != "") && (this->txtCouleur->Text != "") && (this->txt_seuil->Text != "") && (this->TxtTauxTVA->Text != "")) {
+			int id_article;
+			id_article = this->article->ajouter(Convert::ToInt32(this->txtPrixHT->Text), this->txt_Refart->Text, this->txt_NomArticle->Text, Convert::ToInt32(this->txtQuantitee->Text), this->txtNatureArticle->Text, this->txtCouleur->Text, Convert::ToInt32(this->txt_seuil->Text), Convert::ToInt32(this->TxtTauxTVA->Text));
+			this->txt_message->Text = "L'ID généré est le :" + id_article;
+		}
+		else {
+			this->txt_message->Text = "Veuillez remplir les champs nécessaires";
+		}
 	}
 	else if (this->mode == "modify") {
-		this->article->modifier(Convert::ToInt32(this->txt_Idart->Text),Convert::ToInt32(this->txtPrixHT->Text), this->txt_Refart->Text, this->txt_NomArticle->Text, Convert::ToInt32(this->txtQuantitee->Text), this->txtNatureArticle->Text, this->txtCouleur->Text, Convert::ToInt32(this->txt_seuil->Text), Convert::ToInt32(this->TxtTauxTVA->Text));
+		if ((this->txtPrixHT->Text != "") && (this->txt_Refart->Text != "") && (this->txt_NomArticle->Text != "") && (this->txtQuantitee->Text != "") && (this->txtNatureArticle->Text != "") && (this->txtCouleur->Text != "") && (this->txt_seuil->Text != "") && (this->TxtTauxTVA->Text != "") && (this->txt_Idart->Text != "")) {
+			this->article->modifier(Convert::ToInt32(this->txt_Idart->Text), Convert::ToInt32(this->txtPrixHT->Text), this->txt_Refart->Text, this->txt_NomArticle->Text, Convert::ToInt32(this->txtQuantitee->Text), this->txtNatureArticle->Text, this->txtCouleur->Text, Convert::ToInt32(this->txt_seuil->Text), Convert::ToInt32(this->TxtTauxTVA->Text));
+			
+		}
+		else {
+			this->txt_message->Text = "Veuillez remplir les champs nécessaires";
+		}
 	}
 	else if (this->mode == "delete") {
-		this->article->supprimer(Convert::ToInt32(this->txt_Idart->Text));
+		if (this->txt_Idart->Text != "") {
+			this->article->supprimer(Convert::ToInt32(this->txt_Idart->Text));
+		}
+		else {
+			this->txt_message->Text = "Veuillez saisir l'id de l'article à supprimer";
+		}
 	}
 	this->loadData();
 	this->txt_message->Text += "Traitement terminé.";

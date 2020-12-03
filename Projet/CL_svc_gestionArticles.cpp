@@ -52,4 +52,9 @@ namespace NS_services
 		this->article->setId_Article(id_Article);
 		this->cad->actionRows(this->article->DELETE());
 	}
+	void CL_svc_gestionArticles::quantiteVendu(int id_article, int quantite) {
+		this->article->setId_Article(id_article);
+		this->article->setVendu(quantite);
+		this->cad->actionRows(this->article->UPDATESTOCK());
+	}
 }

@@ -20,6 +20,10 @@ namespace NS_composants {
 		return "SELECT * " +
 			"FROM Commande WHERE (Reference='" + this->getRefComm() + "');";
 	}
+	String^ CL_map_commande::SELECTTOTAL(void) {
+		return "SELECT PrixHT " +
+			"FROM Commande WHERE(Reference='" + this->getRefComm() + "');";
+	}
 	String^ CL_map_commande::INSERT(void)
 	{
 		return "INSERT INTO Commande " +
@@ -30,7 +34,7 @@ namespace NS_composants {
 	{
 		return "UPDATE Commande " +
 			"SET reference_Article='" + this->getRefArt() + "',Nom_Article='" + this->getNomArt() + "', Nature='" + this->getNature() + "',Quantite='" + this->getQuantite() + "',PrixHT='" + this->getPrixHT() + "',TauxTVA='" + this->getTVA() + "'" +
-			"WHERE(Id=" + this->getID() + "AND reference=" + this->getRefComm() + ");";
+			"WHERE(Id=" + this->getID() + "AND reference='" + this->getRefComm() + "');";
 	}
 	String^ CL_map_commande::DELETE(void)
 	{
@@ -39,7 +43,7 @@ namespace NS_composants {
 	}
 	String^  CL_map_commande::DELETEALL(void) {
 		return "DELETE FROM Commande " +
-			"WHERE(reference=" + this->getRefComm() + ");";
+			"WHERE(reference='" + this->getRefComm() + "');";
 	}
 	void CL_map_commande::setID(int id) {
 		if (id > 0) {

@@ -19,14 +19,21 @@ namespace NS_services {
 		this->dataset->Clear();
 		this->commande->setRefComm(ref);
 		this->dataset = this->cad->getRows(this->commande->SELECT(), list);
-		return dataset;
+		return this->dataset;
 	}
 	DataSet^ CL_svc_Commande::listeCommandeClient(int id_client, String^ list) {
 
 		this->dataset->Clear();
 		this->commande->setIDclient(id_client);
 		this->dataset = this->cad->getRows(this->commande->SELECTALL(), list);
-		return dataset;
+		return this->dataset;
+	}
+	DataSet^ CL_svc_Commande::prixtotal(String^ ref, String^ liste)
+	{
+		this->dataset->Clear();
+		this->commande->setRefComm(ref);
+		this->dataset = this->cad->getRows(this->commande->SELECTTOTAL(), liste);
+		return this->dataset;
 	}
 	int CL_svc_Commande::ajouterC(int id_client,int id_article, String^ refcomm, String^ refarticle, String^ nom,String^ nature, int tva, int quantite, int prix)
 	{
@@ -85,9 +92,9 @@ namespace NS_services {
 		this->date->setDay(day);
 		this->cad->actionRows(this->date->UPDATEDATECOMM());
 	}
-	void CL_svc_Commande::supprimerD(int id_commande)
+	void CL_svc_Commande::supprimerD(int id)
 	{
-		this->date->setIDcomm(id_commande);
+		this->date->setID(id);
 		this->cad->actionRows(this->date->DELETEDATECOMM());
 	}
 }

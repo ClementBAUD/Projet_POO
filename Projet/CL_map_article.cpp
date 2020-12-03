@@ -32,16 +32,19 @@ namespace NS_composants
 			this->getStock_Article() + "', '" + this->getNat_Article() + "', '" + this->getCouleur_Article() + "', '" +
 			this->getSeuil_Reappro_Article() + "','" + this->getTauxTVA() + "');SELECT @@IDENTITY;";
 	}
-
 	String^ CL_map_article::UPDATE(void)
 	{
-		return "UPDATE TB_Article " +
+		return "UPDATE Article " +
 			"SET PrixHT = '" + this->getPrixHT() + "', Reference = '" + this->getRef_Article() +
 			"', Nom= '" + this->getNom_Article() + "', Quantite_en_stock= '" + this->getStock_Article() + "', Designation= '" + this->getNat_Article() +
-			"', Couleur= '" + this->getCouleur_Article() + "', Seuil_de_reapprovisionnement= '" + this->getSeuil_Reappro_Article() + "', TauxTVA = '" + this->getTauxTVA() + "' " +
+			"', Couleur= '" + this->getCouleur_Article() + "', Seuil_de_reaprovisionnement= '" + this->getSeuil_Reappro_Article() + "', TauxTVA = '" + this->getTauxTVA() + "' " +
 			"WHERE(id_article = " + this->getId_Article() + ");";
 	}
-
+	String^ CL_map_article::UPDATESTOCK(void) {
+		return "UPDATE Article " +
+			"SET Quantite_en_stock= (Quantite_en_stock -" + this->getVendu() + ") "+
+			"WHERE(id_article = " + this->getId_Article() + ");";
+	}
 	String^ CL_map_article::DELETE(void)
 	{
 		return "DELETE FROM Article " +
@@ -163,5 +166,11 @@ namespace NS_composants
 	int CL_map_article::getTauxTVA(void)
 	{
 		return this->TauxTVA;
+	}
+	void CL_map_article::setVendu(int quantite) {
+		this->QuantiteVendu = quantite;
+	}
+	int CL_map_article::getVendu(void) {
+		return this->QuantiteVendu;
 	}
 }

@@ -14,14 +14,17 @@ namespace NS_composants
 		String^ Couleur_Article;
 		int SeuilReappro_Article;
 		int TauxTVA;
+		int QuantiteVendu;
 	public:
 		CL_map_article(void);
 		String^ SELECT(void);
 		String^ SELECTONE(void);
+		String^ UPDATESTOCK(void);
 		String^ INSERT(void);
 		String^ UPDATE(void);
 		String^ DELETE(void);
 		void setId_Article(int);
+		void setVendu(int);
 		void setPrixHT(int);
 		void setRef_Article(String^);
 		void setNom_Article(String^);
@@ -31,6 +34,7 @@ namespace NS_composants
 		void setSeuilReappro_Article(int);
 		void setTauxTVA(int);
 		int getId_Article(void);
+		int getVendu(void);
 		int getPrixHT(void);
 		String^ getRef_Article(void);
 		String^ getNom_Article(void);

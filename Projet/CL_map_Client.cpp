@@ -29,7 +29,6 @@ namespace NS_composants {
         return "DELETE FROM Client " +
             "WHERE(Num_Client = " + this->getId() + ");";
     }
-
     void CL_map_Client::setID(int id)
     {
         if (id > 0)
@@ -37,7 +36,6 @@ namespace NS_composants {
             this->num_client = id;
         }
     }
-
     void CL_map_Client::setPrenom(String^ prenom)
     {
         if (prenom != "")
@@ -45,7 +43,6 @@ namespace NS_composants {
             this->prenom = prenom;
         }
     }
-
     void CL_map_Client::setNom(String^ nom)
     {
         if (nom != "")
@@ -53,17 +50,14 @@ namespace NS_composants {
             this->nom = nom;
         }
     }
-
     int CL_map_Client::getId(void)
     {
         return this->num_client;
     }
-
     String^ CL_map_Client::getNom(void)
     {
         return this->nom;
     }
-
     String^ CL_map_Client::getPrenom(void)
     {
         return this->prenom;

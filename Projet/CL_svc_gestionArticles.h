@@ -20,5 +20,6 @@ namespace NS_services
 		int ajouter(int, String^, String^, int, String^, String^, int, int);
 		void modifier(int, int, String^, String^, int, String^, String^, int, int);
 		void supprimer(int);
+		void quantiteVendu(int, int);
 	};
 }

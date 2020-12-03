@@ -15,7 +15,7 @@ namespace NS_composants {
     String^ CL_map_personnel::INSERT(void)
     {
         return "INSERT INTO Personnel " +
-            "(Nom, Prenom, Superieur_Hierarchique) " + "VALUES('" + this->getNom() + "', '" + this->getPrenom() + this->getSuperieur() + "');SELECT @@IDENTITY;";
+            "(Nom, Prenom, Superieur_Hierarchique) " + "VALUES('" + this->getNom() + "', '" + this->getPrenom() + "','" + this->getSuperieur() + "');SELECT @@IDENTITY;";
     }
 
     String^ CL_map_personnel::UPDATE(void)

@@ -613,12 +613,12 @@ namespace CL_GestionClients {
 		this->txt_prenom->Clear();
 		this->dataGridView_Adresse->Columns->Clear();
 		this->mode = "new";
-		this->txt_message->Text = "Veuillez saisir les informations";
+		this->txt_message->Text = "Veuillez saisir un nom, un prenom";
 	}
 	private: System::Void btn_modifier_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		this->mode = "modify";
-		this->txt_message->Text = "Veuillez remplacer les informations nécessaires";
+		this->txt_message->Text = "Veuillez modifier les informations";
 	}
 	private: System::Void btn_sup_Click(System::Object^ sender, System::EventArgs^ e)
 	{
@@ -628,19 +628,31 @@ namespace CL_GestionClients {
 	private: System::Void btn_enregistrer_Click(System::Object^ sender, System::EventArgs^ e)
 	{
 		if (this->mode == "new") {
+			if ((this->txt_nom->Text != "") && (this->txt_prenom->Text != "")) {
 			int id_personne;
 			id_personne = this->personne->ajouterC(this->txt_nom->Text, this->txt_prenom->Text);
 			this->txt_message->Text = "L'ID généré est le :" + id_personne;
 			this->index++;
 			this->loadData(this->index);
 			this->loadData2();
+			}
+			else {
+				this->txt_message->Text = "Veuillez donner un nom et un prénom";
+			}
 		}
 		else if (this->mode == "modify") {
+			if ((this->txt_nom->Text != "") && (this->txt_prenom->Text != "")) {
 			this->personne->modifierC(Convert::ToInt32(this->txt_idClients->Text), this->txt_nom->Text, this->txt_prenom->Text);
 			this->loadData(this->index);
 			this->loadData2();
+			}
+			else {
+				this->txt_message->Text = "Veuillez donner un nom et un prénom";
+			}
 		}
 		else if (this->mode == "delete") {
+			this->personne->supprimerAC(Convert::ToInt32(this->txt_idClients->Text));
+			this->personne->supprimerDC(Convert::ToInt32(this->txt_idClients->Text));
 			this->personne->supprimerC(Convert::ToInt32(this->txt_idClients->Text));
 			this->index = 0;
 			this->loadData(this->index);
@@ -702,31 +714,51 @@ private: System::Void btn_supprimer_Click(System::Object^ sender, System::EventA
 }
 private: System::Void btn_register_Click(System::Object^ sender, System::EventArgs^ e) {
 	if ((mode3 == "new")&&(mode2 =="adr")){
+		if ((this->txt_donne1->Text != "") && (this->txt_donne2->Text != "") && (this->txt_donne3->Text != "")) {
 		int id_adr;
 		id_adr = this->personne->ajouterAdrC(Convert::ToInt32(this->txt_idClients->Text),this->txt_donne1->Text, this->txt_donne2->Text, this->txt_donne3->Text,this->txt_type->Text);
 		this->txt_message->Text = "L'ID généré est le :" + id_adr;
 		this->loadData2();
+		}
+		else {
+			this->txt_message->Text = "Veuillez remplir comme il faut les champs de données";
+		}
 	}
 	else if ((mode3 == "supp") && (mode2 == "adr")) {
 		this->personne->supprimerAC(Convert::ToInt32(this->txt_idClients->Text));
 		this->loadData2();
 	}
 	else if ((mode3 == "modify") && (mode2 == "adr")) {
+	if ((this->txt_donne1->Text != "") && (this->txt_donne2->Text != "") && (this->txt_donne3->Text != "") && (this->txt_id->Text != "")) {
 		this->personne->modifierAdrC(Convert::ToInt32(this->txt_idClients->Text), Convert::ToInt32(this->txt_id->Text), this->txt_donne1->Text, this->txt_donne2->Text, this->txt_donne3->Text);
 		this->loadData2();
+	}
+	else {
+		this->txt_message->Text = "Veuillez remplir comme il faut les champs de données";
+	}
 	} else if ((mode3 == "new") && (mode2 == "date")) {
+		if ((this->txt_donne1->Text != "") && (this->txt_donne2->Text != "") && (this->txt_donne3->Text != "")) {
 		int id_adr;
 		id_adr = this->personne->ajouterDateC(Convert::ToInt32(this->txt_idClients->Text), Convert::ToInt32(this->txt_donne1->Text), Convert::ToInt32(this->txt_donne2->Text), Convert::ToInt32(this->txt_donne3->Text),this->txt_type->Text);
 		this->txt_message->Text = "L'ID généré est le :" + id_adr;
 		this->loadData3();
+		}
+		else {
+			this->txt_message->Text = "Veuillez remplir comme il faut les champs de données";
+		}
 	}
 	else if ((mode3 == "supp") && (mode2 == "date")) {
 		this->personne->supprimerDC(Convert::ToInt32(this->txt_idClients->Text));
 		this->loadData3();
 	}
 	else if ((mode3 == "modify") && (mode2 == "date")) {
+		if ((this->txt_donne1->Text != "") && (this->txt_donne2->Text != "") && (this->txt_donne3->Text != "") && (this->txt_id->Text != "")) {
 		this->personne->modifierDateC(Convert::ToInt32(this->txt_idClients->Text), Convert::ToInt32(this->txt_id->Text),Convert::ToInt32(this->txt_donne1->Text), Convert::ToInt32(this->txt_donne2->Text), Convert::ToInt32(this->txt_donne3->Text));
 		this->loadData3();
+		}
+		else {
+			this->txt_message->Text = "Veuillez remplir comme il faut les champs de données";
+		}
 	}
 }
 };
